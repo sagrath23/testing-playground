@@ -1,5 +1,8 @@
 import request from 'superagent';
-import config from 'config';
+
+const config = {
+  pokeApiBaseUrl: 'https://pokeapi.co/api/v2'
+};
 
 export const listPokemons = async (listUrl) => {
   const response = await request.get(listUrl).set('Access-Control-Allow-Origin', '*');
