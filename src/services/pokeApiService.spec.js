@@ -1,7 +1,10 @@
-import config from 'config';
 import { OK } from 'http-status-code';
 import nock from 'nock';
 import { getPokemon, listPokemons } from './pokeApiService';
+
+const config = {
+  pokeApiBaseUrl: 'https://pokeapi.co/api/v2'
+};
 
 // este es un ejemplo básico de un unit test con un mock
 describe('PokeApi Services', () => {
@@ -16,11 +19,11 @@ describe('PokeApi Services', () => {
     beforeEach(() => {
       // un mock me permite simular la respuesta de la API con un valor que yo defino
       // para evaluar el comportamiento de mi código
-      nock(config.pokeApiBaseUrl).get('/').reply(OK, pokemonList);
+      nock(config.pokeApiBaseUrl).get('/pokemon/').reply(OK, pokemonList);
     });
 
     test('should retrieve a list of pokemons', async () => {
-      const response = await listPokemons(config.pokeApiBaseUrl);
+      const response = await listPokemons(20, 0);
 
       expect(response).toEqual(pokemonList);
     });
