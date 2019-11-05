@@ -1,6 +1,12 @@
 import { handleActions } from 'redux-actions';
 import { listAction, detailAction} from '../actions';
-import { initialState } from './initialState';
+
+const initialState = {
+  detailedPokemon: null,
+  currentPokemonList: {
+    results: []
+  }
+};
 
 const pokedexReducer = handleActions({
   [listAction]: (state, { payload: { pokemons }}) => ({ ...state, currentPokemonList: pokemons }),

@@ -4,14 +4,14 @@ const config = {
   pokeApiBaseUrl: 'https://pokeapi.co/api/v2'
 };
 
-export const listPokemons = async (listUrl) => {
-  const response = await request.get(listUrl).set('Access-Control-Allow-Origin', '*');
+export const listPokemons = async (limit, offset) => {
+  const response = await request.get(`${config.pokeApiBaseUrl}/pokemon`).query({ limit, offset }).set('Access-Control-Allow-Origin', '*');
 
-  return JSON.parse(response.text);
+  return response;
 };
 
 export const getPokemon = async (pokemonName) => {
-  const response = await request.get(`${config.pokeApiBaseUrl}/api/pokemons/${pokemonName}/`);
+  const response = await request.get(`${config.pokeApiBaseUrl}/pokemon/${pokemonName}`);
 
   return JSON.parse(response.text);
 };

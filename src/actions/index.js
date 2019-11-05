@@ -8,7 +8,7 @@ const {
 } = createActions({
   LIST_ACTION: (pokemons = []) => ({ pokemons }),
   DETAIL_ACTION: (pokemon = {}) => ({ pokemon }),
-  LOAD_LIST_ACTION: (listUrl) => ({ listUrl }),
+  LOAD_LIST_ACTION: (limit, offset) => ({ limit, offset }),
   LOAD_POKEMON_ACTION: (pokemonName) => ({ pokemonName })
 })
 
