@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import { listAction, detailAction} from '../actions';
 
 const initialState = {
-  detailedPokemon: null,
+  detailedPokemon: {},
   currentPokemonList: {
     results: []
   }
