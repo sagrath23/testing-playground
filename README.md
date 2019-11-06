@@ -1,5 +1,7 @@
 # testing-playground
 
+[![Build Status](https://travis-ci.org/sagrath23/testing-playground.svg?branch=master)](https://travis-ci.org/sagrath23/testing-playground)
+
 A small repo to apply some software testing concepts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
