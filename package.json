@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/react": "^9.3.2",
     "display-if": "^1.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
@@ -23,7 +24,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --coverage --verbose"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/serviceWorker.js",
+      "!**/index.js"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

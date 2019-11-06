@@ -16,17 +16,17 @@ const PokemonList = () => {
 
   return (
     <div>
-      <ul>
+      <ul data-testid="pokemon-list-list">
         {pokemonList.map((pokemon, index) => (
-          <li key={index}>
+          <li data-testid={`pokemon-list-item-${index}`} key={index}>
             <Link to={`/pokemons/${pokemon.name}`}>
               <img alt="pokemon_sprite" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${extractPokemonIDFromURL(pokemon.url)}.png`} />
               {pokemon.name}
             </Link>
           </li>))}
       </ul>
-      <button onClick={() => setOffset(offset + limit)}>Next</button>
-      <button onClick={() => setOffset(offset - limit)}>Prev</button>
+      <button data-testid="pokemon-list-next-button" onClick={() => setOffset(offset + limit)}>Next</button>
+      <button data-testid="pokemon-list-prev-button" onClick={() => setOffset(offset - limit)}>Prev</button>
     </div>
     
   );

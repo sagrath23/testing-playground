@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout page Component test should render the PokemonDetail Component 1`] = `
+<div>
+  <div>
+    <h2
+      data-testid="pokemon-name"
+    />
+    <div>
+      <div>
+        <div
+          data-src="../images/pokemons/undefined.svg"
+          src=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Layout page Component test should render the PokemonList Component 1`] = `
+<div>
+  <div>
+    <ul
+      data-testid="pokemon-list-list"
+    />
+    <button
+      data-testid="pokemon-list-next-button"
+    >
+      Next
+    </button>
+    <button
+      data-testid="pokemon-list-prev-button"
+    >
+      Prev
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Layout page Component test should render the component with default props 1`] = `<div />`;

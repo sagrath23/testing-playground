@@ -15,7 +15,7 @@ const PokemonDetail = () => {
 
   return (
     <div display-if={detailedPokemon.name}>
-      <h2>{detailedPokemon.name}</h2>
+      <h2 data-testid="pokemon-name">{detailedPokemon.name}</h2>
       <ReactSVG src={`../images/pokemons/${detailedPokemon.id}.svg`} />
     </div>
   );
