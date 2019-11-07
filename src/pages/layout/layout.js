@@ -17,7 +17,7 @@ import {
 import { PokemonDetail, PokemonList } from '../../components/Pokemon';
 
 const Layout = () => {
-  const [isOpen, setIsOpen] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
