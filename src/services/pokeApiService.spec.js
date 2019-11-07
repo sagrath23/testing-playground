@@ -7,7 +7,7 @@ const config = {
 };
 
 // este es un ejemplo básico de un unit test con un mock
-describe('PokeApi Services', () => {
+describe.skip('PokeApi Services', () => {
   describe('listPokemons service', () => {
     const pokemonList = {
       count: 964,
