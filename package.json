@@ -7,6 +7,7 @@
     "bootstrap": "^4.3.1",
     "display-if": "^1.0.4",
     "prop-types": "^15.7.2",
+    "query-string": "^6.9.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.1",

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import {
+  Link,
+  NavLink,
+  useHistory,
+  useLocation
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonGroup, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import { loadListAction } from '../../../actions';
@@ -8,9 +14,23 @@ const limit = 20;
 const extractPokemonIDFromURL = (url) => (url.split('/')[6]);
 
 const PokemonList = () => {
+  const { search } = useLocation();
+  const history = useHistory();
+  const { offset: startOffset = 0 } = queryString.parse(search);
   const dispatch = useDispatch();
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(startOffset);
   const { results: pokemonList } = useSelector((state) => (state.currentPokemonList));
+  const handleClick = (direction) => {
+    let newOffset;
+    if (direction === 'next') {
+      newOffset = offset + limit;
+    } else {
+      newOffset = offset - limit;
+    }
+
+    setOffset(newOffset);
+    history.push(`/pokemons?offset=${newOffset}`);
+  }
   useEffect(() => {
     dispatch(loadListAction(limit, offset));
   }, [dispatch, offset]);
@@ -27,8 +47,8 @@ const PokemonList = () => {
           </ListGroupItem>))}
       </ListGroup>
       <ButtonGroup>
-        <Button data-testid="pokemon-list-prev-button" onClick={() => setOffset(offset - limit)}>Prev</Button>
-        <Button data-testid="pokemon-list-next-button" onClick={() => setOffset(offset + limit)}>Next</Button>
+        <Button data-testid="pokemon-list-prev-button" onClick={() => handleClick('prev')}>Prev</Button>
+        <Button data-testid="pokemon-list-next-button" onClick={() => handleClick('next')}>Next</Button>
       </ButtonGroup>
     </Col>
     
@@ -36,4 +56,3 @@ const PokemonList = () => {
 };
 
 export default PokemonList;
-// https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png
