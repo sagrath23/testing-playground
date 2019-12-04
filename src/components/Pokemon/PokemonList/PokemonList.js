@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
-import {
-  Link,
-  NavLink,
-  useHistory,
-  useLocation
-} from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, ButtonGroup, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import { loadListAction } from '../../../actions';
@@ -32,8 +27,9 @@ const PokemonList = () => {
     history.push(`/pokemons?offset=${newOffset}`);
   }
   useEffect(() => {
+    setOffset(startOffset);
     dispatch(loadListAction(limit, offset));
-  }, [dispatch, offset]);
+  }, [dispatch, offset, startOffset]);
 
   return (
     <Col>
