@@ -7,23 +7,28 @@ const config = {
 };
 
 // este es un ejemplo básico de un unit test con un mock
-describe.skip('PokeApi Services', () => {
+describe('PokeApi Services', () => {
   describe('listPokemons service', () => {
     const pokemonList = {
       count: 964,
       next: 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20',
       previous:null,
       results: []
-     };
+    };
+    const limit = 20;
+    const offset = 0;
 
     beforeEach(() => {
       // un mock me permite simular la respuesta de la API con un valor que yo defino
       // para evaluar el comportamiento de mi código
-      nock(config.pokeApiBaseUrl).get('/pokemon/').reply(OK, pokemonList);
+      nock(config.pokeApiBaseUrl)
+        .get('/pokemon')
+        .query({ limit, offset })
+        .reply(OK, pokemonList);
     });
 
     test('should retrieve a list of pokemons', async () => {
-      const response = await listPokemons(20, 0);
+      const response = await listPokemons(limit, offset);
 
       expect(response).toEqual(pokemonList);
     });
@@ -38,7 +43,9 @@ describe.skip('PokeApi Services', () => {
      };
 
     beforeEach(() => {
-      nock(config.pokeApiBaseUrl).get(`/api/pokemons/${pokemonName}/`).reply(OK, pokemonDetail);
+      nock(config.pokeApiBaseUrl)
+        .get(`/pokemon/${pokemonName}`)
+        .reply(OK, pokemonDetail);
     });
 
     test('should retrieve the info of a specific pokemon', async () => {
