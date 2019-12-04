@@ -23,9 +23,9 @@ const PokemonList = () => {
   const handleClick = (direction) => {
     let newOffset;
     if (direction === 'next') {
-      newOffset = offset + limit;
+      newOffset = +offset + limit;
     } else {
-      newOffset = offset - limit;
+      newOffset = +offset - limit;
     }
 
     setOffset(newOffset);
